@@ -1,22 +1,26 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Home from './screen/Home'
-import Login from './screen/Login'
-import './App.css'
+import React from "react";
+import { useSelector } from "react-redux";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Home from "./screen/Home";
+import Login from "./screen/Login";
+import { Toaster } from "react-hot-toast";
+import "./App.css";
 
 const App = () => {
-
-  const userAuth = useSelector((state) => state.userLogin)
-  const { userInfo } = userAuth
+  const userAuth = useSelector((state) => state.userLogin);
+  const { userInfo } = userAuth;
   return (
-    <div className='app'>
+    <div className="app">
       <Routes>
-        <Route path='/' element={userInfo ? <Home /> : <Navigate to='/login' />} />
-        <Route path='/login' element={<Login />} />
+        <Route
+          path="/"
+          element={userInfo ? <Home /> : <Navigate to="/login" />}
+        />
+        <Route path="/login" element={<Login />} />
       </Routes>
+      <Toaster />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
